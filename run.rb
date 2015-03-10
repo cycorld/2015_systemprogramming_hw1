@@ -11,7 +11,7 @@ temp = Array.new
   size = s * RESOLUTION
   ITERATION.times do |try|
     result = %x[./ij.out #{size}].to_f
-    STDOUT.write "\rIJ | (#{(size - 1) * ITERATION + try} / #{1024 * ITERATION}) RESULT : #{result}"
+    STDOUT.write "\rIJ | (#{(size - 1) * ITERATION + try} / #{1023 * ITERATION}) RESULT : #{result}"
     temp << result
   end
   result_ij["#{4 * size * size}"] = temp.inject{|sum, x| sum + x}.to_f / temp.size
@@ -22,7 +22,7 @@ end
   size = s * RESOLUTION
   ITERATION.times do |try|
     result = %x[./ji.out #{size}].to_f
-    STDOUT.write "\rJI | (#{(size - 1) * ITERATION + try} / #{1024 * ITERATION}) RESULT : #{result}"
+    STDOUT.write "\rJI | (#{(size - 1) * ITERATION + try} / #{1023 * ITERATION}) RESULT : #{result}"
     temp << result
   end
   result_ji["#{4 * size * size}"] = temp.inject{|sum, x| sum + x}.to_f / temp.size
